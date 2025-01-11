@@ -6,11 +6,17 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SocketDataService {
-  constructor(private socket: Socket) {}
 
-  getData(): Observable<number[]> {
+   texto:string = "aaaa ";
+  constructor(private socket: Socket) {}
+   
+
+  getData(): Observable<(number | string)> {
     this.socket.emit('subscribeToServer', 1000);
 
-    return this.socket.fromEvent<number[]>('reading');
+    return this.socket.fromEvent<(number | string)>('reading');
   }
+
+
+ 
 }

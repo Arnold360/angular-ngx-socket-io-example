@@ -8,11 +8,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  data: Observable<number[]>;
+  data: Observable<(number | string)>;
+  
 
   constructor(private dataService: SocketDataService) {}
 
   ngOnInit() {
     this.data = this.dataService.getData();
+    
   }
-}
+ 
+  bajarNumero() {
+    this.data = this.dataService.getData();
+  }
+ }
+
